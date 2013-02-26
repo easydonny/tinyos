@@ -309,7 +309,8 @@ implementation {
         sfdHigh = FALSE;
         call CaptureSFD.captureRisingEdge();
         
-        if ( (call CC2420PacketBody.getHeader( m_msg ))->fcf & ( 1 << IEEE154_FCF_ACK_REQ ) ) {
+        //--if ( (call CC2420PacketBody.getHeader( m_msg ))->fcf & ( 1 << IEEE154_FCF_ACK_REQ ) ) {
+        if ( 1 ) {
           m_state = S_ACK_WAIT;
           call BackoffTimer.start( CC2420_ACK_WAIT_DELAY );
         } else {

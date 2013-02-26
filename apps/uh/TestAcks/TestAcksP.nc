@@ -57,7 +57,7 @@ implementation {
   message_t myMsg;
   
   enum {  
-    DELAY_BETWEEN_MESSAGES = 50,
+    DELAY_BETWEEN_MESSAGES = 500,
   };
   
   
@@ -117,7 +117,8 @@ implementation {
   
   /***************** Tasks ****************/
   task void send() {
-    call PacketAcknowledgements.requestAck(&myMsg);
+    //call PacketAcknowledgements.requestAck(&myMsg);
+    call PacketAcknowledgements.noAck(&myMsg);
     if(call AMSend.send(1, &myMsg, 0) != SUCCESS) {
       post send();
     }

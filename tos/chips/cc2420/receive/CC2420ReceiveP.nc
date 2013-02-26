@@ -275,8 +275,11 @@ implementation {
        * address is useful when we want to sniff packets from other transmitters
        * while acknowledging packets that were destined for our local address.
        */
-      if(call CC2420Config.isAutoAckEnabled() && !call CC2420Config.isHwAutoAckDefault()) {
-        if (((( header->fcf >> IEEE154_FCF_ACK_REQ ) & 0x01) == 1)
+     //--if(call CC2420Config.isAutoAckEnabled() && !call CC2420Config.isHwAutoAckDefault()) {
+      if( !call CC2420Config.isHwAutoAckDefault()) {
+      //--if (1) {
+        //--if (((( header->fcf >> IEEE154_FCF_ACK_REQ ) & 0x01) == 1)
+        if ( 1
             && ((header->dest == call CC2420Config.getShortAddr())
                 || (header->dest == AM_BROADCAST_ADDR))
             && ((( header->fcf >> IEEE154_FCF_FRAME_TYPE ) & 7) == IEEE154_TYPE_DATA)) {
@@ -326,6 +329,8 @@ implementation {
       // We may have received an ack that should be processed by Transmit
       // buf[rxFrameLength] >> 7 checks the CRC
       if ( ( buf[ rxFrameLength ] >> 7 ) && rx_buf ) {
+      //if ( ( (FALSE) || buf[ rxFrameLength ] >> 7 ) && rx_buf ) {
+      //--if ( rx_buf ) {
         uint8_t type = ( header->fcf >> IEEE154_FCF_FRAME_TYPE ) & 7;
         signal CC2420Receive.receive( type, m_p_rx_buf );
         if ( type == IEEE154_TYPE_DATA ) {

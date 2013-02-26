@@ -1,11 +1,11 @@
 <tos_image>
   <ident>
-    <uidhash>2421EEBEL</uidhash>
+    <uidhash>CF051083L</uidhash>
     <hostname>tinyu</hostname>
     <username>donny</username>
     <appname>RadioCountToLed</appname>
     <userhash>B9C52689L</userhash>
-    <timestamp>512AFE68L</timestamp>
+    <timestamp>512C4313L</timestamp>
     <deluge_support>no</deluge_support>
     <platform>telosb</platform>
   </ident>
