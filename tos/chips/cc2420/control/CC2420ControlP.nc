@@ -499,8 +499,8 @@ implementation {
           ( ((addressRecognition && hwAddressRecognition) ? 1 : 0) << CC2420_MDMCTRL0_ADR_DECODE ) |
           ( 2 << CC2420_MDMCTRL0_CCA_HYST ) |
           ( 3 << CC2420_MDMCTRL0_CCA_MOD ) |
-          //--( 1 << CC2420_MDMCTRL0_AUTOCRC ) |
-          ( 0 << CC2420_MDMCTRL0_AUTOCRC ) |
+          ( 1 << CC2420_MDMCTRL0_AUTOCRC ) |
+          //( 0 << CC2420_MDMCTRL0_AUTOCRC ) |
           ( (autoAckEnabled && hwAutoAckDefault) << CC2420_MDMCTRL0_AUTOACK ) |
           ( 0 << CC2420_MDMCTRL0_AUTOACK ) |
           ( 2 << CC2420_MDMCTRL0_PREAMBLE_LENGTH ) );

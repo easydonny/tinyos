@@ -10,7 +10,7 @@ export TOSROOT=
 export TOSDIR=
 export MAKERULES=
 
-TOSROOT="/opt/tinyos-2.1.2"
+TOSROOT="/opt/tinyos"
 TOSDIR="$TOSROOT/tos"
 CLASSPATH=$CLASSPATH:$TOSROOT/support/sdk/java
 MAKERULES="$TOSROOT/support/make/Makerules"
