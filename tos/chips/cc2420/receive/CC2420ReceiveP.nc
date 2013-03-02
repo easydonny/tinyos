@@ -192,14 +192,8 @@ implementation {
   /***************** InterruptFIFOP Events ****************/
   async event void InterruptFIFOP.fired() {
     if ( m_state == S_STARTED ) {
-#ifndef CC2420_HW_SECURITY
       m_state = S_RX_LENGTH;
       beginReceive();
-#else
-      m_state = S_RX_DEC;
-      atomic receivingPacket = TRUE;
-      beginDec();
-#endif
     } else {
       m_missed_packets++;
     }
@@ -328,9 +322,9 @@ implementation {
 
       // We may have received an ack that should be processed by Transmit
       // buf[rxFrameLength] >> 7 checks the CRC
-      if ( ( buf[ rxFrameLength ] >> 7 ) && rx_buf ) {
+      //--if ( ( buf[ rxFrameLength ] >> 7 ) && rx_buf ) {
       //if ( ( (FALSE) || buf[ rxFrameLength ] >> 7 ) && rx_buf ) {
-      //--if ( rx_buf ) {
+      if ( rx_buf ) {
         uint8_t type = ( header->fcf >> IEEE154_FCF_FRAME_TYPE ) & 7;
         signal CC2420Receive.receive( type, m_p_rx_buf );
         if ( type == IEEE154_TYPE_DATA ) {

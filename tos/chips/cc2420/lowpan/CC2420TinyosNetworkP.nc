@@ -157,9 +157,9 @@ implementation {
   event message_t *SubReceive.receive(message_t *msg, void *payload, uint8_t len) {
     uint8_t network = call CC2420Packet.getNetwork(msg);
 
-    if(!(call CC2420PacketBody.getMetadata(msg))->crc) {
+    /*--if(!(call CC2420PacketBody.getMetadata(msg))->crc) {
       return msg;
-    }
+    }*/
 #ifndef TFRAMES_ENABLED
     if (network == TINYOS_6LOWPAN_NETWORK_ID) {
       return signal ActiveReceive.receive(msg, payload, len);

@@ -37,7 +37,9 @@
  *   Led2 = Missed an ack
  * @author David Moss
  */
- 
+
+//#define NEW_PRINTF_SEMANTICS
+#include "printf.h" 
 
 configuration TestAcksC {
 }
@@ -51,6 +53,8 @@ implementation {
       new TimerMilliC(),
       LedsC;
   components CC2420ControlC;
+  components PrintfC;
+  components SerialStartC;
       
   TestAcksP.Boot -> MainC;
   TestAcksP.SplitControl -> ActiveMessageC;
@@ -60,5 +64,6 @@ implementation {
   TestAcksP.PacketAcknowledgements -> ActiveMessageC;
   TestAcksP.Timer -> TimerMilliC;
   TestAcksP.CC2420Config -> CC2420ControlC.CC2420Config;
+  TestAcksP.Packet -> AMSenderC;
   
 }

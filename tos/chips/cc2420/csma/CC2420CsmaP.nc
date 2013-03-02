@@ -135,7 +135,7 @@ implementation {
 
     // header->length = len + CC2420_SIZE;
     header->fcf &= ((1 << IEEE154_FCF_ACK_REQ) | 
-                    //--((1 << IEEE154_FCF_ACK_REQ) | 
+                    //--((0 << IEEE154_FCF_ACK_REQ) | 
                     (0x3 << IEEE154_FCF_SRC_ADDR_MODE) |
                     (0x3 << IEEE154_FCF_DEST_ADDR_MODE));
 
